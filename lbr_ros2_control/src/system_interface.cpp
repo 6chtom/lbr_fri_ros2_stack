@@ -203,7 +203,7 @@ controller_interface::CallbackReturn SystemInterface::on_activate(const rclcpp_l
   }
   app_ptr_->run(parameters_.rt_prio);
   uint8_t attempt = 0;
-  uint8_t max_attempts = 10;
+  uint8_t max_attempts = 20;
   while (!async_client_ptr_->get_state_interface().is_initialized() && rclcpp::ok()) {
     RCLCPP_INFO(rclcpp::get_logger(LOGGER_NAME),
                 "Waiting for robot heartbeat [%d/%d]. Port ID: %d.", attempt + 1, max_attempts,
